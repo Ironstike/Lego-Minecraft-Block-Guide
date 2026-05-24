@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<head>
+  
+</head>
+<body>
+  <header><h1>Lego Minecraft Block Guide</h1></header>
+  <section>
+    fetch('block-list.txt')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.text();
+  })
+  .then(text => {
+    console.log(text);
+    // Display in HTML
+    document.getElementById('output').textContent = text;
+  })
+  .catch(error => console.error('Fetch error:', error));   
+  </section>
+</body>
