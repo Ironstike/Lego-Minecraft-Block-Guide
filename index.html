@@ -4,19 +4,23 @@
 </head>
 <body>
   <header><h1>Lego Minecraft Block Guide</h1></header>
-  <section>
-    fetch('List.htm')
+ 
+   fetch('/List.htm')
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return response.text();
   })
-  .then(text => {
-    console.log(text);
-    // Display in HTML
-    document.getElementById('output').textContent = text;
+  .then(data => {
+    console.log(data);
+
+    // Example: put the file contents into an element
+    document.getElementById('Block-list').innerHTML = data;
   })
-  .catch(error => console.error('Fetch error:', error));   
+  .catch(error => {
+    console.error('Failed to fetch List.htm:', error);
+  });
+  <section id="Block-list">
   </section>
 </body>
