@@ -1,0 +1,7 @@
+body {
+    background-image: url('BlockSprite_dirt.png');
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: 4em;
+    font-family: Minecraftchmc-dBlX;
+}
