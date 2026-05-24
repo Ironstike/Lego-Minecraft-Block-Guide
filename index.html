@@ -4,7 +4,7 @@
 </head>
 <body>
   <header><h1>Lego Minecraft Block Guide</h1></header>
- 
+ <script>
    fetch('/List.htm')
   .then(response => {
     if (!response.ok) {
@@ -21,6 +21,7 @@
   .catch(error => {
     console.error('Failed to fetch List.htm:', error);
   });
+ </script>
   <section id="Block-list">
   </section>
 </body>
