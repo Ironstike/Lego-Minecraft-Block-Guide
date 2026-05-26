@@ -60,48 +60,70 @@ async function loadBlock() {
         `/Images/instructions/${id}.png`;
 
     // Helper function
-    function testImage(path, element, failText) {
+   
+   function testImage(path, imageId, textId, failText) {
 
-        const img = new Image();
+    const img = new Image();
 
-        img.onload = () => {
+    img.onload = () => {
 
-            const imageElement =
-                document.createElement("img");
+        const imageElement =
+            document.getElementById(imageId);
 
-            imageElement.src = path;
+        imageElement.src = path;
 
-            element.appendChild(imageElement);
-        };
+        imageElement.style.display = "block";
+    };
 
-        img.onerror = () => {
+    img.onerror = () => {
 
-            element.textContent = failText;
-        };
+        document.getElementById(textId)
+            .textContent = failText;
+    };
 
-        img.src = path;
-    }
-
-    // Check images
-    testImage(
-        igPath,
-        igElement,
-        "No Image Found"
-    );
-
-    testImage(
-        legoPath,
-        legoElement,
-        "No Image Found"
-    );
-
-    testImage(
-        instructionsPath,
-        instructionsElement,
-        "No Building Instructions Found"
-    );
+    img.src = path;
 }
+  
+// Check images
+  testImage(
+    igPath,
+    "igblock-img",
+    "igblock-text",
+    "No Image Found"
+);
 
+testImage(
+    legoPath,
+    "lblock-img",
+    "lblock-text",
+    "No Image Found"
+);
+
+testImage(
+    instructionsPath,
+    "instructions-img",
+    "instructions-text",
+    "No Building Instructions Found"
+);
 loadBlock();
   </script>
+  <h1 id="title"></h1>
+
+<h2>In-Game Block</h2>
+<div id="igblock">
+    <img id="igblock-img" style="display:none;">
+    <p id="igblock-text"></p>
+</div>
+
+<h2>LEGO Block</h2>
+<div id="lblock">
+    <img id="lblock-img" style="display:none;">
+    <p id="lblock-text"></p>
+</div>
+
+<h2>Building Instructions</h2>
+<div id="instructions">
+    <img id="instructions-img" style="display:none;">
+    <p id="instructions-text"></p>
+</div>
 </body>
