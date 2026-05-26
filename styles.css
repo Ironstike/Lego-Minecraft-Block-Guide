@@ -10,3 +10,6 @@ body {
     font-family: MCmain;
     image-rendering: pixelated
 }
+div section {
+    color: gray;
+}
