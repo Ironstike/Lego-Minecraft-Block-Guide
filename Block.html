@@ -4,4 +4,104 @@
 </head>
 <body>
   <header><h1>Lego Minecraft Block Guide</h1></header>
+  <script> 
+  const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+async function loadBlock() {
+
+    // Fetch database
+    const response = await fetch("/Block-Name.json");
+    const data = await response.text();
+
+    // Split lines
+    const lines = data.trim().split("\n");
+
+    let blockName = null;
+
+    // Find matching ID
+    for (const line of lines) {
+
+        const [name, blockId] = line.split("\t");
+
+        if (blockId === id) {
+            blockName = name;
+            break;
+        }
+    }
+
+    // HTML IDs
+    const titleElement = document.getElementById("title");
+    const igElement = document.getElementById("igblock");
+    const legoElement = document.getElementById("lblock");
+    const instructionsElement =
+        document.getElementById("instructions");
+
+    // No block found
+    if (!blockName) {
+
+        titleElement.textContent =
+            "Block Not Found";
+
+        return;
+    }
+
+    // Set title
+    titleElement.textContent = blockName;
+
+    // Image paths
+    const igPath =
+        `/Images/igblocks/${id}.png`;
+
+    const legoPath =
+        `/Images/lblocks/${id}.png`;
+
+    const instructionsPath =
+        `/Images/instructions/${id}.png`;
+
+    // Helper function
+    function testImage(path, element, failText) {
+
+        const img = new Image();
+
+        img.onload = () => {
+
+            const imageElement =
+                document.createElement("img");
+
+            imageElement.src = path;
+
+            element.appendChild(imageElement);
+        };
+
+        img.onerror = () => {
+
+            element.textContent = failText;
+        };
+
+        img.src = path;
+    }
+
+    // Check images
+    testImage(
+        igPath,
+        igElement,
+        "No Image Found"
+    );
+
+    testImage(
+        legoPath,
+        legoElement,
+        "No Image Found"
+    );
+
+    testImage(
+        instructionsPath,
+        instructionsElement,
+        "No Building Instructions Found"
+    );
+}
+
+loadBlock();
+  </script>
 </body>
