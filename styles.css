@@ -11,5 +11,5 @@ body {
     image-rendering: pixelated
 }
 h1, h2, h3, p, div, section {
-    color: gray;
+    background-color: gray;
 }
