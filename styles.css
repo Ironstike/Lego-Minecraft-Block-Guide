@@ -10,6 +10,6 @@ body {
     font-family: MCmain;
     image-rendering: pixelated
 }
-h1 h2 h3 p div section {
+h1, h2, h3, p, div, section {
     color: gray;
 }
