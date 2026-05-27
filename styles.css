@@ -11,9 +11,9 @@
 
 body {
 
-    backgound image: url("BlockSprite-dirt");
+    backgound-image: url("IMG_1165.png");
 
-    background-repeat: repeat
+    background-repeat: repeat;
     
     background-color: brass;
 
