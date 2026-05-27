@@ -90,6 +90,8 @@ section {
     text-shadow: 2px 2px #aaaaaa;
     
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .btn {
