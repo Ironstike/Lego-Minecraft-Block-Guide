@@ -152,7 +152,26 @@ a:hover {
 
 #loading img {
 
-    width: 128px;
+    width: 40px;
+
+    opacity: 1.0;
 
     image-rendering: pixelated;
+}
+#block-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 20px;
+}
+
+#block-list div {
+
+    padding: 10px 15px;
 }
