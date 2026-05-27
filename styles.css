@@ -192,3 +192,25 @@ a:hover {
 
     padding: 10px 15px;
 }
+
+#bg {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-image:
+        url('BlockSprite_dirt.png');
+
+    background-repeat: repeat;
+
+    background-size: 128px;
+
+    image-rendering: pixelated;
+
+    z-index: -1;
+}
