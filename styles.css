@@ -140,7 +140,13 @@ a {
 
 a:hover {
 
-    color: #ffffff;
+    color: #yellow;
+    
+   
+}
+.btn:hover {
+
+    color: #white;
     
     background-color: dimgrey;
 }
