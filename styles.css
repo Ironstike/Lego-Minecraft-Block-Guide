@@ -1,11 +1,12 @@
 @font-face {
+
     font-family: MCmain;
 
-    src:
-    url(fonts/minecraft-chmc-font/Minecraftchmc-dBlX.ttf);
+    src: url(fonts/minecraft-chmc-font/Minecraftchmc-dBlX.ttf);
 }
 
 * {
+
     box-sizing: border-box;
 }
 
@@ -38,16 +39,13 @@ body {
 
 header {
 
-    background-color:
-        rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
 
-    border-bottom:
-        4px solid #1a1a1a;
+    border-bottom: 4px solid #1a1a1a;
 
     padding: 20px;
 
-    box-shadow:
-        inset 0 -4px #555555;
+    box-shadow: inset 0 -4px #555555;
 }
 
 h1 {
@@ -68,35 +66,37 @@ h2 {
     color: #ffff55;
 }
 
-.btn, div,
+.btn,
 section {
 
-    background-color:
-        rgba(198, 198, 198, 0.9);
+    background-color: rgba(198, 198, 198, 0.9);
 
-    border-top:
-        4px solid #ffffff;
+    border-top: 4px solid #ffffff;
 
-    border-left:
-        4px solid #ffffff;
+    border-left: 4px solid #ffffff;
 
-    border-right:
-        4px solid #555555;
+    border-right: 4px solid #555555;
 
-    border-bottom:
-        4px solid #555555;
+    border-bottom: 4px solid #555555;
 
     padding: 20px;
 
-    margin:
-        20px auto;
+    margin: 20px auto;
 
     width: 340px;
 
     color: black;
 
-    text-shadow:
-        2px 2px #aaaaaa;
+    text-shadow: 2px 2px #aaaaaa;
+}
+
+.btn {
+
+    display: inline-block;
+
+    text-decoration: none;
+
+    font-weight: bold;
 }
 
 img {
@@ -104,24 +104,20 @@ img {
     width: 320px;
 
     image-rendering: pixelated;
+
     image-rendering: crisp-edges;
 
     transform: translateZ(0);
 
-
     height: auto;
 
-    border-top:
-        4px solid #555555;
+    border-top: 4px solid #555555;
 
-    border-left:
-        4px solid #555555;
+    border-left: 4px solid #555555;
 
-    border-right:
-        4px solid #ffffff;
+    border-right: 4px solid #ffffff;
 
-    border-bottom:
-        4px solid #ffffff;
+    border-bottom: 4px solid #ffffff;
 
     background-color: black;
 
@@ -141,23 +137,23 @@ a {
 
     color: green;
 
-    font-style: bold;
-    
-   font-size: 1.4rem;
+    font-weight: bold;
+
+    font-size: 1.4rem;
 }
 
 a:hover {
 
-    color: #yellow;
-    font-style: bold;
-   font-size: 1.4rem;
+    color: yellow;
+
+    font-weight: bold;
 }
+
 .btn:hover {
 
-    color: #white;
-    font-style: bold;
+    color: white;
+
     background-color: dimgrey;
-    font-size: 1.4rem;
 }
 
 #loading {
@@ -175,6 +171,7 @@ a:hover {
 
     image-rendering: pixelated;
 }
+
 #block-list {
 
     display: flex;
@@ -188,23 +185,19 @@ a:hover {
     padding: 20px;
 }
 
-#block-list div {
-
-    padding: 10px 15px;
-}
-
 #bg {
 
     position: fixed;
 
     top: 0;
+
     left: 0;
 
     width: 100vw;
+
     height: 100vh;
 
-    background-image:
-        url('BlockSprite_dirt.png');
+    background-image: url('BlockSprite_dirt.png');
 
     background-repeat: repeat;
 
@@ -214,6 +207,7 @@ a:hover {
 
     z-index: -1;
 }
+
 #content {
 
     position: relative;
