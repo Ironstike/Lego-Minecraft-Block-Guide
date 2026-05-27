@@ -142,3 +142,17 @@ a:hover {
 
     color: #ffffff;
 }
+
+#loading {
+
+    text-align: center;
+
+    margin-top: 40px;
+}
+
+#loading img {
+
+    width: 128px;
+
+    image-rendering: pixelated;
+}
