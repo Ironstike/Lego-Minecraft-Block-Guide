@@ -197,17 +197,20 @@ a:hover {
 
     height: 100vh;
 
-    background-image: url('BlockSprite_dirt.png');
+    background-image: url("./IMG_1165.png");
 
     background-repeat: repeat;
 
-    background-size: 128px;
+    background-size: 128px 128px;
 
     image-rendering: pixelated;
 
+    image-rendering: crisp-edges;
+
+    transform: translateZ(0);
+
     z-index: -1;
 }
-
 #content {
 
     position: relative;
