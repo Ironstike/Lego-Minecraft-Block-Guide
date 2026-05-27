@@ -205,3 +205,9 @@ a:hover {
 
     z-index: -1;
 }
+#content {
+
+    position: relative;
+
+    z-index: 1;
+}
