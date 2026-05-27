@@ -1,20 +1,146 @@
 @font-face {
-  font-family:MCmain;
-  src: url(fonts/minecraft-chmc-font/Minecraftchmc-dBlX.ttf);
-}
-body {
-    background-image: url('BlockSprite_dirt.png');
-    background-position: center center;
-    background-repeat: repeat;
-    background-size: 200px;
     font-family: MCmain;
-    color: white;
-    text-shadow: -3px 3px black;
-    image-rendering: pixelated;
+
+    src:
+    url(fonts/minecraft-chmc-font/Minecraftchmc-dBlX.ttf);
 }
-div, section {
-    background-color: gray;
-    border-style: solid;
-    border-color: #404040;
-    corner-shape: square;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    background-image:
+        url('BlockSprite_dirt.png');
+
+    background-repeat: repeat;
+
+    background-size: 200px;
+
+    image-rendering: pixelated;
+
+    font-family: MCmain;
+
+    color: white;
+
+    text-shadow:
+        2px 2px #3f3f3f;
+
+    margin: 0;
+
+    padding: 0;
+
+    text-align: center;
+}
+
+header {
+
+    background-color:
+        rgba(0, 0, 0, 0.7);
+
+    border-bottom:
+        4px solid #1a1a1a;
+
+    padding: 20px;
+
+    box-shadow:
+        inset 0 -4px #555555;
+}
+
+h1 {
+
+    font-size: 3rem;
+
+    margin: 20px 0;
+
+    color: #ffffff;
+}
+
+h2 {
+
+    margin-top: 40px;
+
+    font-size: 2rem;
+
+    color: #ffff55;
+}
+
+div,
+section {
+
+    background-color:
+        rgba(198, 198, 198, 0.9);
+
+    border-top:
+        4px solid #ffffff;
+
+    border-left:
+        4px solid #ffffff;
+
+    border-right:
+        4px solid #555555;
+
+    border-bottom:
+        4px solid #555555;
+
+    padding: 20px;
+
+    margin:
+        20px auto;
+
+    width: fit-content;
+
+    min-width: 350px;
+
+    color: black;
+
+    text-shadow:
+        2px 2px #aaaaaa;
+}
+
+img {
+
+    image-rendering: pixelated;
+
+    max-width: 400px;
+
+    width: 100%;
+
+    border-top:
+        4px solid #555555;
+
+    border-left:
+        4px solid #555555;
+
+    border-right:
+        4px solid #ffffff;
+
+    border-bottom:
+        4px solid #ffffff;
+
+    background-color: black;
+
+    display: block;
+
+    margin: auto;
+}
+
+p {
+
+    margin-top: 15px;
+
+    font-size: 1.2rem;
+}
+
+a {
+
+    color: #ffff55;
+
+    text-decoration: none;
+}
+
+a:hover {
+
+    color: #ffffff;
 }
