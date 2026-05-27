@@ -1,114 +1,17 @@
 <!DOCTYPE HTML>
+<html>
+
 <head>
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header><h1>Lego Minecraft Block Guide</h1></header>
-  <script> 
-  const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
 
-async function loadBlock() {
+<header>
+    <h1>Lego Minecraft Block Guide</h1>
+</header>
 
-    // Fetch database
-    const response = await fetch("/Block-Name.json");
-    const data = await response.text();
-
-    // Split lines
-    const lines = data.trim().split("\n");
-
-    let blockName = null;
-
-    // Find matching ID
-    for (const line of lines) {
-
-        const [name, blockId] = line.split("\t");
-
-        console.log("URL ID:", id);
-console.log("Checking:", blockId);
-
-if (blockId.trim() === id.trim())
-        }
-    }
-
-    // HTML IDs
-    const titleElement = document.getElementById("title");
-    const igElement = document.getElementById("igblock");
-    const legoElement = document.getElementById("lblock");
-    const instructionsElement =
-        document.getElementById("instructions");
-
-    // No block found
-    if (!blockName) {
-
-        titleElement.textContent =
-            "Block Not Found";
-
-        return;
-    }
-
-    // Set title
-    titleElement.textContent = blockName;
-
-    // Image paths
-    const igPath =
-        `/Images/igblocks/${id}.png`;
-
-    const legoPath =
-        `/Images/lblocks/${id}.png`;
-
-    const instructionsPath =
-        `/Images/instructions/${id}.png`;
-
-    // Helper function
-   
-   function testImage(path, imageId, textId, failText) {
-
-    const img = new Image();
-
-    img.onload = () => {
-
-        const imageElement =
-            document.getElementById(imageId);
-
-        imageElement.src = path;
-
-        imageElement.style.display = "block";
-    };
-
-    img.onerror = () => {
-
-        document.getElementById(textId)
-            .textContent = failText;
-    };
-
-    img.src = path;
-}
-  
-// Check images
-  testImage(
-    igPath,
-    "igblock-img",
-    "igblock-text",
-    "No Image Found"
-);
-
-testImage(
-    legoPath,
-    "lblock-img",
-    "lblock-text",
-    "No Image Found"
-);
-
-testImage(
-    instructionsPath,
-    "instructions-img",
-    "instructions-text",
-    "No Building Instructions Found"
-);
-loadBlock();
-  </script>
-  <h1 id="title"></h1>
+<h1 id="title"></h1>
 
 <h2>In-Game Block</h2>
 <div id="igblock">
@@ -127,4 +30,128 @@ loadBlock();
     <img id="instructions-img" style="display:none;">
     <p id="instructions-text"></p>
 </div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+async function loadBlock() {
+
+    // Fetch database
+    const response =
+        await fetch("/Block-Name.json");
+
+    const data =
+        await response.text();
+
+    // Split lines and skip header
+    const lines =
+        data.trim().split("\n").slice(1);
+
+    let blockName = null;
+
+    // Find matching ID
+    for (const line of lines) {
+
+        const [name, blockId] =
+            line.split("\t");
+
+        console.log("URL ID:", id);
+        console.log("Checking:", blockId);
+
+        if (blockId.trim() === id.trim()) {
+
+            blockName = name.trim();
+
+            break;
+        }
+    }
+
+    // HTML elements
+    const titleElement =
+        document.getElementById("title");
+
+    // No block found
+    if (!blockName) {
+
+        titleElement.textContent =
+            "Block Not Found";
+
+        return;
+    }
+
+    // Set title
+    titleElement.textContent =
+        blockName;
+
+    // Image paths
+    const igPath =
+        `/Images/igblocks/${id}.png`;
+
+    const legoPath =
+        `/Images/lblocks/${id}.png`;
+
+    const instructionsPath =
+        `/Images/instructions/${id}.png`;
+
+    // Image checker
+    function testImage(
+        path,
+        imageId,
+        textId,
+        failText
+    ) {
+
+        const img = new Image();
+
+        img.onload = () => {
+
+            const imageElement =
+                document.getElementById(imageId);
+
+            imageElement.src = path;
+
+            imageElement.style.display =
+                "block";
+        };
+
+        img.onerror = () => {
+
+            document.getElementById(textId)
+                .textContent = failText;
+        };
+
+        img.src = path;
+    }
+
+    // Check images
+    testImage(
+        igPath,
+        "igblock-img",
+        "igblock-text",
+        "No Image Found"
+    );
+
+    testImage(
+        legoPath,
+        "lblock-img",
+        "lblock-text",
+        "No Image Found"
+    );
+
+    testImage(
+        instructionsPath,
+        "instructions-img",
+        "instructions-text",
+        "No Building Instructions Found"
+    );
+}
+
+// RUN FUNCTION
+loadBlock();
+
+</script>
+
 </body>
+</html>
