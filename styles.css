@@ -101,9 +101,13 @@ section {
 
 img {
 
-    image-rendering: pixelated;
+    width: 320px;
 
-    width: 300px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+
+    transform: translateZ(0);
+
 
     height: auto;
 
