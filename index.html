@@ -76,18 +76,19 @@ async function loadBlocks() {
             continue;
 
         // Create link
-       const link =
-    document.createElement("a");
+        const link =
+            document.createElement("a");
 
-link.href =
+        link.href =
 `https://lego-minecraft-block-guide.vercel.app/Block.html?id=${cleanId}`;
 
-link.textContent =
-    cleanName;
+        link.textContent =
+            cleanName;
 
-link.classList.add("btn");
+        link.classList.add("btn");
 
-blockList.appendChild(link);
+        blockList.appendChild(link);
+    }
 
     // Hide loading gif
     loading.style.display =
