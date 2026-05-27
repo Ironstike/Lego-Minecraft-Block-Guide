@@ -3,13 +3,19 @@
 
 <head>
 
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Lego Minecraft Block Guide</title>
+
+    <link rel="stylesheet"
+          href="styles.css">
 
 </head>
 
 <body>
-
-
 
 <header>
 
@@ -21,13 +27,12 @@
 
 <div id="loading">
 
-    <img src="/loading.gif">
+    <img src="/loading.gif"
+         alt="Loading">
 
 </div>
 
 <div id="block-list"></div>
-
-</div>
 
 <script>
 
@@ -39,68 +44,81 @@ async function loadBlocks() {
     const blockList =
         document.getElementById("block-list");
 
-    // Load block database
-    const blockResponse =
-        await fetch("/Block-Name.json");
+    try {
 
-    const blockData =
-        await blockResponse.text();
+        // Load block database
+        const blockResponse =
+            await fetch("/Block-Name.json");
 
-    const blockLines =
-        blockData
-            .trim()
-            .split("\n")
-            .slice(1);
+        const blockData =
+            await blockResponse.text();
 
-    // Load valid block IDs
-    const validResponse =
-        await fetch("/ValidBlocks.json");
+        const blockLines =
+            blockData
+                .trim()
+                .split("\n")
+                .slice(1);
 
-    const validData =
-        await validResponse.text();
+        // Load valid block IDs
+        const validResponse =
+            await fetch("/ValidBlocks.json");
 
-    const validIds =
-        validData
-            .trim()
-            .split("\n")
-            .map(id => id.trim());
+        const validData =
+            await validResponse.text();
 
-    // Fast lookup set
-    const validSet =
-        new Set(validIds);
+        const validIds =
+            validData
+                .trim()
+                .split("\n")
+                .map(id => id.trim());
 
-    // Process blocks
-    for (const line of blockLines) {
+        // Fast lookup
+        const validSet =
+            new Set(validIds);
 
-        const [name, id] =
-            line.split("\t");
+        // Generate buttons
+        for (const line of blockLines) {
 
-        const cleanName =
-            name.trim();
+            const [name, id] =
+                line.split("\t");
 
-        const cleanId =
-            id.trim();
+            if (!name || !id)
+                continue;
 
-        // Skip invalid blocks
-        if (!validSet.has(cleanId))
-            continue;
+            const cleanName =
+                name.trim();
 
-        // Create link
-        const link =
-            document.createElement("a");
+            const cleanId =
+                id.trim();
 
-        link.href =
+            // Skip invalid blocks
+            if (!validSet.has(cleanId))
+                continue;
+
+            // Create button
+            const link =
+                document.createElement("a");
+
+            link.href =
 `https://lego-minecraft-block-guide.vercel.app/Block.html?id=${cleanId}`;
 
-        link.textContent =
-            cleanName;
+            link.textContent =
+                cleanName;
 
-        link.classList.add("btn");
+            link.classList.add("btn");
 
-        blockList.appendChild(link);
+            blockList.appendChild(link);
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        blockList.innerHTML =
+            "<p>Failed to load blocks.</p>";
     }
 
-    // Hide loading gif
+    // Hide loading icon
     loading.style.display =
         "none";
 }
