@@ -86,26 +86,41 @@ async function loadBlock() {
         blockName;
 
     // Image paths
-    const igPath =
-        `/Images/igblocks/${id}.png`;
+   const igPath =
+    `/Images/igblocks/${id}`;
 
-    const legoPath =
-        `/Images/lblocks/${id}.png`;
+const legoPath =
+    `/Images/lblocks/${id}`;
 
-    const instructionsPath =
-        `/Images/instructions/${id}.png`;
+const instructionsPath =
+    `/Images/instructions/${id}`;
 
     // Image checker
-    function testImage(
-        path,
-        imageId,
-        textId,
-        failText
-    ) {
+   function testImage(
+    basePath,
+    imageId,
+    textId,
+    failText
+) {
+
+    const extensions = [
+        ".png",
+        ".gif"
+    ];
+
+    let found = false;
+
+    extensions.forEach(ext => {
+
+        const path = basePath + ext;
 
         const img = new Image();
 
         img.onload = () => {
+
+            if (found) return;
+
+            found = true;
 
             const imageElement =
                 document.getElementById(imageId);
@@ -118,12 +133,21 @@ async function loadBlock() {
 
         img.onerror = () => {
 
-            document.getElementById(textId)
-                .textContent = failText;
+            if (
+                ext === extensions[
+                    extensions.length - 1
+                ] &&
+                !found
+            ) {
+
+                document.getElementById(textId)
+                    .textContent = failText;
+            }
         };
 
         img.src = path;
-    }
+    });
+}
 
     // Check images
     testImage(
