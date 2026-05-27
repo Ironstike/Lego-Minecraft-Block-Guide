@@ -133,14 +133,16 @@ p {
 
 a {
 
-    color: #ffff55;
+    color: white;
 
-    text-decoration: none;
+   
 }
 
 a:hover {
 
     color: #ffffff;
+    
+    background-color: dimgrey;
 }
 
 #loading {
