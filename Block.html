@@ -24,9 +24,10 @@ async function loadBlock() {
 
         const [name, blockId] = line.split("\t");
 
-        if (blockId === id) {
-            blockName = name;
-            break;
+        console.log("URL ID:", id);
+console.log("Checking:", blockId);
+
+if (blockId.trim() === id.trim())
         }
     }
 
