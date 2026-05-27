@@ -90,8 +90,6 @@ section {
     text-shadow: 2px 2px #aaaaaa;
     
     text-align: center;
-    display: flex;
-    justify-content: center;
 }
 
 .btn {
@@ -105,29 +103,18 @@ section {
 
 img {
 
-    width: 300px;
-
-    image-rendering: pixelated;
-
-    image-rendering: crisp-edges;
-
-    transform: translateZ(0);
-
-    height: auto;
-
-    border-top: 4px solid #555555;
-
-    border-left: 4px solid #555555;
-
-    border-right: 4px solid #ffffff;
-
-    border-bottom: 4px solid #ffffff;
-
-    background-color: black;
-
-    display: block;
-
-    margin: auto;
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: auto;
+  background-color: black;
+  border-top: 4px solid #555555;
+  border-left: 4px solid #555555;
+  border-right: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  transform: translateZ(0);
 }
 
 p {
