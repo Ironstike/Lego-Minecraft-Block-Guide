@@ -11,14 +11,14 @@
 
 body {
 
-    backgound-image: url("IMG_1165.png");
+    background-image: url("IMG_1165.png");
 
     background-repeat: repeat;
-    
-    background-color: brass;
+
+    background-color: #b87333;
 
     image-rendering: pixelated;
-    
+
     image-rendering: crisp-edges;
 
     transform: translateZ(0);
