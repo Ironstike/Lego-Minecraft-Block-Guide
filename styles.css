@@ -13,6 +13,6 @@ body {
 h1, h2, h3, p, div, section {
     background-color: gray;
     border-style: solid;
-    border-color: gray;
+    border-color: 404040;
     corner-shape: square;
 }
