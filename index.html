@@ -4,50 +4,61 @@
 </head>
 <body>
   <header><h1>Lego Minecraft Block Guide</h1></header>
- <script>
-  async function loadBlocks() {
+<script>
 
-    // Fetch block database
-    const response =
-        await fetch("/Block-Name.json");
+async function loadBlocks() {
 
-    const data =
-        await response.text();
-
-    // Split lines and skip header
-    const lines =
-        data.trim().split("\n").slice(1);
+    const loading =
+        document.getElementById("loading");
 
     const blockList =
         document.getElementById("block-list");
 
-    // Check every block
-    for (const line of lines) {
+    // Load block database
+    const blockResponse =
+        await fetch("/Block-Name.json");
+
+    const blockData =
+        await blockResponse.text();
+
+    const blockLines =
+        blockData.trim()
+            .split("\n")
+            .slice(1);
+
+    // Load image list
+    const imageResponse =
+        await fetch("/Image-List.json");
+
+    const imageFiles =
+        await imageResponse.json();
+
+    // Create a fast lookup set
+    const imageSet =
+        new Set();
+
+    imageFiles.forEach(file => {
+
+        const id =
+            file.split(".")[0];
+
+        imageSet.add(id);
+    });
+
+    // Process blocks
+    for (const line of blockLines) {
 
         const [name, id] =
             line.split("\t");
 
-        // Remove spaces/newlines
         const cleanName =
             name.trim();
 
         const cleanId =
             id.trim();
 
-        // Image paths
-        const pngPath =
-            `/Images/lblocks/${cleanId}.png`;
-
-        const gifPath =
-            `/Images/lblocks/${cleanId}.gif`;
-
-        // Check if image exists
-        const hasImage =
-            await imageExists(pngPath) ||
-            await imageExists(gifPath);
-
-        // Skip if no image
-        if (!hasImage)
+        // Skip if image missing
+        if (!imageSet.has(cleanId))
             continue;
 
         // Create link
@@ -66,29 +77,22 @@
 
         div.appendChild(link);
 
-        // Add to page
         blockList.appendChild(div);
     }
+
+    // Hide loading gif
+    loading.style.display =
+        "none";
 }
 
-// Image checker
-function imageExists(path) {
-
-    return new Promise(resolve => {
-
-        const img = new Image();
-
-        img.onload = () => resolve(true);
-
-        img.onerror = () => resolve(false);
-
-        img.src = path;
-    });
-}
-
-// Run
 loadBlocks();
 
 </script>
- <div id="block-list"></div>
+  
+<div id="loading">
+    <img src="/loading.gif">
+</div>
+
+<div id="block-list"></div>
 </body>
+</html>
