@@ -4,6 +4,12 @@
 </head>
 <body>
   <header><h1>Lego Minecraft Block Guide</h1></header>
+<div id="loading">
+    <img src="/loading.gif">
+</div>
+
+<div id="block-list"></div>
+
 <script>
 
 async function loadBlocks() {
@@ -26,24 +32,21 @@ async function loadBlocks() {
             .split("\n")
             .slice(1);
 
-    // Load image list
-    const imageResponse =
-        await fetch("/Image-List.json");
+    // Load valid block IDs
+    const validResponse =
+        await fetch("/ValidBlocks.json");
 
-    const imageFiles =
-        await imageResponse.json();
+    const validData =
+        await validResponse.text();
 
-    // Create a fast lookup set
-    const imageSet =
-        new Set();
+    const validIds =
+        validData.trim()
+            .split("\n")
+            .map(id => id.trim());
 
-    imageFiles.forEach(file => {
-
-        const id =
-            file.split(".")[0];
-
-        imageSet.add(id);
-    });
+    // Fast lookup
+    const validSet =
+        new Set(validIds);
 
     // Process blocks
     for (const line of blockLines) {
@@ -57,8 +60,8 @@ async function loadBlocks() {
         const cleanId =
             id.trim();
 
-        // Skip if image missing
-        if (!imageSet.has(cleanId))
+        // Skip invalid blocks
+        if (!validSet.has(cleanId))
             continue;
 
         // Create link
