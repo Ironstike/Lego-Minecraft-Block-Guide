@@ -2,39 +2,64 @@
 <html>
 
 <head>
+
     <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
 
+<div id="bg"></div>
+
+<div id="content">
+
 <header>
+
     <h1>Lego Minecraft Block Guide</h1>
+
 </header>
 
 <h1 id="title"></h1>
 
 <h2>In-Game Block</h2>
-<div id="igblock">
+
+<section id="igblock">
+
     <img id="igblock-img" style="display:none;">
+
     <p id="igblock-text"></p>
-</div>
+
+</section>
 
 <h2>LEGO Block</h2>
-<div id="lblock">
+
+<section id="lblock">
+
     <img id="lblock-img" style="display:none;">
+
     <p id="lblock-text"></p>
-</div>
+
+</section>
 
 <h2>Building Instructions</h2>
-<div id="instructions">
+
+<section id="instructions">
+
     <img id="instructions-img" style="display:none;">
+
     <p id="instructions-text"></p>
+
+</section>
+
 </div>
 
 <script>
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+const params =
+    new URLSearchParams(window.location.search);
+
+const id =
+    params.get("id");
 
 async function loadBlock() {
 
@@ -58,11 +83,13 @@ async function loadBlock() {
             line.split("\t");
 
         console.log("URL ID:", id);
+
         console.log("Checking:", blockId);
 
         if (blockId.trim() === id.trim()) {
 
-            blockName = name.trim();
+            blockName =
+                name.trim();
 
             break;
         }
@@ -86,68 +113,71 @@ async function loadBlock() {
         blockName;
 
     // Image paths
-   const igPath =
-    `/Images/igblocks/${id}`;
+    const igPath =
+        `/Images/igblocks/${id}`;
 
-const legoPath =
-    `/Images/lblocks/${id}`;
+    const legoPath =
+        `/Images/lblocks/${id}`;
 
-const instructionsPath =
-    `/Images/instuctions/${id}`;
+    const instructionsPath =
+        `/Images/instuctions/${id}`;
 
     // Image checker
-   function testImage(
-    basePath,
-    imageId,
-    textId,
-    failText
-) {
+    function testImage(
+        basePath,
+        imageId,
+        textId,
+        failText
+    ) {
 
-    const extensions = [
-        ".png",
-        ".gif"
-    ];
+        const extensions = [
+            ".png",
+            ".gif"
+        ];
 
-    let found = false;
+        let found = false;
 
-    extensions.forEach(ext => {
+        extensions.forEach(ext => {
 
-        const path = basePath + ext;
+            const path =
+                basePath + ext;
 
-        const img = new Image();
+            const img =
+                new Image();
 
-        img.onload = () => {
+            img.onload = () => {
 
-            if (found) return;
+                if (found) return;
 
-            found = true;
+                found = true;
 
-            const imageElement =
-                document.getElementById(imageId);
+                const imageElement =
+                    document.getElementById(imageId);
 
-            imageElement.src = path;
+                imageElement.src =
+                    path;
 
-            imageElement.style.display =
-                "block";
-        };
+                imageElement.style.display =
+                    "block";
+            };
 
-        img.onerror = () => {
+            img.onerror = () => {
 
-            if (
-                ext === extensions[
-                    extensions.length - 1
-                ] &&
-                !found
-            ) {
+                if (
+                    ext === extensions[
+                        extensions.length - 1
+                    ] &&
+                    !found
+                ) {
 
-                document.getElementById(textId)
-                    .textContent = failText;
-            }
-        };
+                    document.getElementById(textId)
+                        .textContent = failText;
+                }
+            };
 
-        img.src = path;
-    });
-}
+            img.src = path;
+        });
+    }
 
     // Check images
     testImage(
