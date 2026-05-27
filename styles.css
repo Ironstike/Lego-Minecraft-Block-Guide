@@ -133,22 +133,25 @@ p {
 
 a {
 
-    color: white;
+    color: green;
 
-   
+    font-style: bold;
+    
+   font-size: 1.4rem;
 }
 
 a:hover {
 
     color: #yellow;
-    
-   
+    font-style: bold;
+   font-size: 1.4rem;
 }
 .btn:hover {
 
     color: #white;
-    
+    font-style: bold;
     background-color: dimgrey;
+    font-size: 1.4rem;
 }
 
 #loading {
