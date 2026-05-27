@@ -11,8 +11,17 @@
 
 body {
 
-  
-    background-color: brown;
+    backgound image: url("BlockSprite-dirt");
+
+    background-repeat: repeat
+    
+    background-color: brass;
+
+    image-rendering: pixelated;
+    
+    image-rendering: crisp-edges;
+
+    transform: translateZ(0);
 
     font-family: MCmain;
 
