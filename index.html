@@ -5,23 +5,90 @@
 <body>
   <header><h1>Lego Minecraft Block Guide</h1></header>
  <script>
-   fetch('/List.htm')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    return response.text();
-  })
-  .then(data => {
-    console.log(data);
+  async function loadBlocks() {
 
-    // Example: put the file contents into an element
-    document.getElementById('Block-list').innerHTML = data;
-  })
-  .catch(error => {
-    console.error('Failed to fetch List.htm:', error);
-  });
- </script>
-  <section id="Block-list">
-  </section>
+    // Fetch block database
+    const response =
+        await fetch("/Block-Name.json");
+
+    const data =
+        await response.text();
+
+    // Split lines and skip header
+    const lines =
+        data.trim().split("\n").slice(1);
+
+    const blockList =
+        document.getElementById("block-list");
+
+    // Check every block
+    for (const line of lines) {
+
+        const [name, id] =
+            line.split("\t");
+
+        // Remove spaces/newlines
+        const cleanName =
+            name.trim();
+
+        const cleanId =
+            id.trim();
+
+        // Image paths
+        const pngPath =
+            `/Images/lblocks/${cleanId}.png`;
+
+        const gifPath =
+            `/Images/lblocks/${cleanId}.gif`;
+
+        // Check if image exists
+        const hasImage =
+            await imageExists(pngPath) ||
+            await imageExists(gifPath);
+
+        // Skip if no image
+        if (!hasImage)
+            continue;
+
+        // Create link
+        const link =
+            document.createElement("a");
+
+        link.href =
+`https://lego-minecraft-block-guide.vercel.app/Block.html?id=${cleanId}`;
+
+        link.textContent =
+            cleanName;
+
+        // Create container
+        const div =
+            document.createElement("div");
+
+        div.appendChild(link);
+
+        // Add to page
+        blockList.appendChild(div);
+    }
+}
+
+// Image checker
+function imageExists(path) {
+
+    return new Promise(resolve => {
+
+        const img = new Image();
+
+        img.onload = () => resolve(true);
+
+        img.onerror = () => resolve(false);
+
+        img.src = path;
+    });
+}
+
+// Run
+loadBlocks();
+
+</script>
+ <div id="block-list"></div>
 </body>
