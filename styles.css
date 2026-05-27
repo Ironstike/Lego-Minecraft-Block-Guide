@@ -89,9 +89,7 @@ section {
     margin:
         20px auto;
 
-    width: fit-content;
-
-    min-width: 350px;
+    width: 340px;
 
     color: black;
 
@@ -103,9 +101,9 @@ img {
 
     image-rendering: pixelated;
 
-    max-width: 400px;
+    width: 300px;
 
-    width: 100%;
+    height: auto;
 
     border-top:
         4px solid #555555;
